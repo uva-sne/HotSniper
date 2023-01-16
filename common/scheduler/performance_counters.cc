@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -55,6 +56,7 @@ double PerformanceCounters::getPowerOfComponent (string component) const {
         std::string value;
         getline(issFooter, value, '\t');
         if (token == component) {
+            std::cerr << "DEBUG POWER: " << token << " value: " << value << endl;
             return stod (value);
         }
     }
@@ -121,6 +123,7 @@ double PerformanceCounters::getTemperatureOfComponent (string component) const {
         getline(issFooter, value, '\t');
 
         if (token == component) {
+            std::cerr << "DEBUG TEMP: " << token << " value: " << value << endl;
             return stod (value);
         }
     }
@@ -241,6 +244,7 @@ double PerformanceCounters::getRvalueOfComponent (std::string component) const {
         getline(issFooter, value, '\t');
 
         if (token == component) {
+            std::cerr << "DEBUG RVAL: " << token << " value: " << value << endl;
             return stod(value);
         }
     }
