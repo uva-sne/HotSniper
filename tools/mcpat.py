@@ -717,7 +717,11 @@ def power_stack(power_dat, cfg, seconds, powertype='total', nocollapse=False):
             hotspot_args += ['-init_file', os.path.join(
                 sniper_config.get_config(cfg, "general/output_dir"), 'Temperature.init')]
 
+        # SP: debug
+        print([hotspot_binary] + hotspot_args)
         temperatures = subprocess.check_output([hotspot_binary] + hotspot_args)
+        print(Temperatures)
+
         with open(os.path.join(sniper_config.get_config(cfg, "general/output_dir"), 'Temperature.init'), 'w') as f:
             f.write(temperatures)
 
