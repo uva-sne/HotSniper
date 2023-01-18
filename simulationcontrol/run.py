@@ -206,7 +206,7 @@ def get_workload(benchmark, cores, parallelism=None, number_tasks=None, input_se
 
 def example():
     for benchmark in (
-                      #'parsec-blackscholes',
+                      'parsec-blackscholes',
                       #'parsec-bodytrack',
                       #'parsec-canneal',
                       #'parsec-dedup',
@@ -226,15 +226,18 @@ def example():
                       #'splash2-fft',
                       #'splash2-lu.cont',
                       #'splash2-lu.ncont',
-                      'splash2-radix',
+                      #'splash2-radix',
                       ):
+
         min_parallelism = get_feasible_parallelisms(benchmark)[0]
         max_parallelism = get_feasible_parallelisms(benchmark)[-1]
         for freq in (1, 4):
+            # SP: temporary to run on dual core gainestown
             #for parallelism in (max_parallelism,):
-            for parallelism in (1,2):
+            for parallelism in (2,):
                 # you can also use try_run instead
-                run(['{:.1f}GHz'.format(freq), 'maxFreq', 'slowDVFS'], get_instance(benchmark, parallelism, input_set='small'))
+                print("SP:{}".format(parallelism))
+                run(['{:.1f}GHz'.format(freq), 'maxFreq', 'slowDVFS'], get_instance(benchmark, parallelism, input_set='simsmall'))
 
 
 def test_static_power():
