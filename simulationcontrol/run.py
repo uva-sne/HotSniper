@@ -82,7 +82,7 @@ def run(base_configuration, benchmark, ignore_error=False):
         periodicPower = 250000
     if 'fastDVFS' in base_configuration:
         periodicPower = 100000
-    args = '-n {number_cores} -c {config} --benchmarks={benchmark} --no-roi --sim-end=last -senergystats:{periodic} -speriodic-power:{periodic}' \
+    args = '-n {number_cores} -c {config} --benchmarks={benchmark} --no-roi --sim-end=last -senergystats:{periodic} -speriodic-power:{periodic} -s magic_user' \
         .format(number_cores=NUMBER_CORES,
                 config=SNIPER_CONFIG,
                 benchmark=benchmark,
