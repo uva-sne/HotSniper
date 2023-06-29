@@ -21,12 +21,12 @@ def hook_magic_user(core, a):
   print 'Time:[t=%3dus]' % (sim.stats.time() / 1e9),
   return 0
 
-def hook_magic_user2(core, a):
-  print '[SCRIPT] Magic user2 from core %d: a = %d' % (core, a)
+def hook_timer(core, a):
   current_time = sim.stats.time()
-  print 'Time:[t=%3dus]' % (current_time / 1e9),
+  print '[Time:t=%3dus][SCRIPT] Timer hook called from core %d with arg = %d' % ((current_time / 1e9), core, a)
+
   return current_time
 
 
 sim.util.register_command(0x123, hook_magic_user)
-sim.util.register_command(0x124, hook_magic_user2)
+sim.util.register_command(0x124, hook_timer)
