@@ -229,10 +229,11 @@ def example():
                       ):
         min_parallelism = get_feasible_parallelisms(benchmark)[0]
         max_parallelism = get_feasible_parallelisms(benchmark)[-1]
-        for freq in (1, 4):
-            for parallelism in (max_parallelism,):
+        for freq in (1, ):
+            for parallelism in (min_parallelism,):
                 # you can also use try_run instead
-                run(['{:.1f}GHz'.format(freq), 'maxFreq', 'slowDVFS'], get_instance(benchmark, parallelism, input_set='simsmall'))
+                #run(['{:.1f}GHz'.format(freq), 'maxFreq', 'slowDVFS'], get_instance(benchmark, parallelism, input_set='simsmall'))
+                run(['{:.1f}GHz'.format(freq), 'maxFreq', 'slowDVFS'], 'parsec-blackscholes-simsmall-2,parsec-blackscholes-simsmall-2')
 
 
 def test_static_power():
